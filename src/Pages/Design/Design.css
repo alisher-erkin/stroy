@@ -1,0 +1,21 @@
+.text-block {
+    text-align: center;
+}
+.text-block .col {
+    border: 1px solid #A9A9A9;
+    border-radius: 10px;
+    margin-right: 20px;
+    padding: 30px 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.design-items .col {
+    background-color: #FDF5E6;
+}
+.design-items h3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.text-block {
+    padding-bottom: 50px;
+}

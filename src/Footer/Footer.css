@@ -1,0 +1,17 @@
+.footer {
+    background-color: #A9A9A9;
+    padding: 50px 0;
+}
+.footer .col {
+    text-align: center;
+}
+.footer .col p {
+    text-align: left;
+}
+.footer .nav {
+    display: block;
+    text-align: left;
+}
+.footer .nav-link {
+    color: black;
+}
