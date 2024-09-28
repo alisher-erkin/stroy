@@ -14,7 +14,7 @@ export default class Advantages extends Component {
             <h3>Преимущества нашей компании</h3>
             <Col className='col-sm-4'>
             <Card>
-            <Card.Img variant="top" src="stroy/img/contract.png" alt="contract"  className='img-fluid'/>
+            <Card.Img variant="top" src="img/contract.png" alt="contract"  className='img-fluid'/>
             <Card.Body>
                 <Card.Title>Договор</Card.Title>
                 <Card.Text>
@@ -25,7 +25,7 @@ export default class Advantages extends Component {
             </Col>
             <Col className='col-sm-4'>
               <Card>
-              <Card.Img variant="top" src="stroy/img/design.png" alt="design" className='img-fluid' />
+              <Card.Img variant="top" src="img/design.png" alt="design" className='img-fluid' />
               <Card.Body>
                   <Card.Title>Дизайн</Card.Title>
                   <Card.Text>
@@ -36,7 +36,7 @@ export default class Advantages extends Component {
             </Col>
             <Col className='col-sm-4'>
               <Card>
-              <Card.Img variant="top" src="stroy/img/worker.png" alt="worker" className='img-fluid' />
+              <Card.Img variant="top" src="img/worker.png" alt="worker" className='img-fluid' />
               <Card.Body>
                   <Card.Title>Опытные мастера</Card.Title>
                   <Card.Text>
@@ -49,7 +49,7 @@ export default class Advantages extends Component {
             <Row>
               <Col className='col-sm-4'>
               <Card>
-              <Card.Img variant="top" src="stroy/img/planning.png" alt="planning" className='img-fluid' />
+              <Card.Img variant="top" src="img/planning.png" alt="planning" className='img-fluid' />
               <Card.Body>
                   <Card.Title>Планирование</Card.Title>
                   <Card.Text>
@@ -60,7 +60,7 @@ export default class Advantages extends Component {
               </Col>
               <Col className='col-sm-4'>
                 <Card>
-                <Card.Img variant="top" src="stroy/img/calendar.png" alt="calendar" className='img-fluid' />
+                <Card.Img variant="top" src="img/calendar.png" alt="calendar" className='img-fluid' />
                 <Card.Body>
                     <Card.Title>Сроки</Card.Title>
                     <Card.Text>
@@ -71,7 +71,7 @@ export default class Advantages extends Component {
               </Col>
               <Col className='col-sm-4'>
                 <Card>
-                <Card.Img variant="top" src="stroy/img/help.png" alt="help" className='img-fluid' />
+                <Card.Img variant="top" src="img/help.png" alt="help" className='img-fluid' />
                 <Card.Body>
                     <Card.Title>Помощь</Card.Title>
                     <Card.Text>
