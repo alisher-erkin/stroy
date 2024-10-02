@@ -94,7 +94,7 @@ export default class Repair extends Component {
               </p>
             </Col>
             <Col>
-              <img src="img/painting.jpg" alt="materials" className='img-fluid' />
+              <img src="img/painting.jpg" alt="materials" className="img-fluid" />
             </Col>
           </Row>
         </Container>

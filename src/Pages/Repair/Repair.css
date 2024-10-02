@@ -32,3 +32,8 @@
     padding: 10px 30px;
     line-height: 30px;
   }
+  @media (max-width: 568px) {
+    .items .col {
+         margin-left: 15px;
+     }
+ }

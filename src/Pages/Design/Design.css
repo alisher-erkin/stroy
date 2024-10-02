@@ -11,6 +11,9 @@
 .design-items .col {
     background-color: #FDF5E6;
 }
+.col:last-child {
+    margin-right: 0px;
+}
 .design-items h3 {
     text-align: center;
     margin-top: 30px;
@@ -19,3 +22,8 @@
 .text-block {
     padding-bottom: 50px;
 }
+@media (max-width: 568px) {
+    .design-items .col {
+         margin-left: 15px;
+     }
+ }

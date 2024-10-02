@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import img from '../../images/bg-design.jpg';
 import '../Design/Design.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default class Design extends Component {
@@ -39,21 +40,21 @@ export default class Design extends Component {
           </Row>
           <Row className='text-block'>
             <h3 className='title-list'>Этапы Дизайн проекта</h3>
-            <Col>
+            <Col className="col-sm-3">
               <h4>Сбор информации</h4>
               <p>Выполняется замер помещения и фотосессия проекта, определяются ваши предпочтения,
                 разрабатываются планировочные решения, согласовывется с Заказчиком выбор отделочных
                 материалов.
               </p>
             </Col>
-            <Col>
+            <Col className="col-sm-3">
               <h4>Визулизация</h4>
               <p>Выполняется Дизайн проект с 3D-визулизацией с учетом предпочтений Заказчика.
                  Предлагаются идеи по разработке Дизайн проекта а также несколько вариантов по 
                  каждому помещению.
               </p>
             </Col>
-            <Col>
+            <Col className="col-sm-3">
               <h4>Схемы коммуникаций</h4>
               <p>Разрабатываются схемы в PDF-файле для сантехнических и электрических и при 
                 необходимости вентиляционных коммуникаций, а также газового оборудования и 
