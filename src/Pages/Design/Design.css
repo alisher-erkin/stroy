@@ -10,9 +10,8 @@
 }
 .design-items .col {
     background-color: #FDF5E6;
-}
-.col:last-child {
-    margin-right: 0px;
+    min-width: 400px;
+    margin-bottom: 20px;
 }
 .design-items h3 {
     text-align: center;
