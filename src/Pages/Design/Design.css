@@ -21,6 +21,7 @@
 }
 .text-block {
     padding-bottom: 50px;
+    justify-content: center;
 }
 @media (max-width: 568px) {
     .design-items .col {
