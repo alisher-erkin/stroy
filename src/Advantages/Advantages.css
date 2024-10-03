@@ -49,3 +49,8 @@ li {
     min-width: 360px;
     margin-bottom: 30px;
 }
+@media (max-width: 568px) {
+    .list-items li {
+        font-size: 16px;
+     }
+  }
