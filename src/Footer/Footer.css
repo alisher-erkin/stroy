@@ -4,13 +4,16 @@
 }
 .footer .col {
     text-align: center;
+    min-width: 360px;
+    margin-bottom: 30px;
 }
 .footer .col p {
-    text-align: left;
+    text-align: center;
 }
 .footer .nav {
     display: block;
     text-align: left;
+    text-align: center;
 }
 .footer .nav-link {
     color: black;
