@@ -18,7 +18,7 @@ export default class Contacts extends Component {
             <h3>Контакты</h3>
             <Col>
               <p>Телефон</p>
-              +998770089611
+              <a href="tel:+998770089611">+998770089611</a>
             </Col>
             <Col>
               <p>Режим работы</p>

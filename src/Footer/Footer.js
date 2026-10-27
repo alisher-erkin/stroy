@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from "react-bootstrap";
 import logo from '../Logo/logo.jpg';
 import './Footer.css';
-import { Nav, NavLink } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 export default class Footer extends Component {
@@ -16,10 +17,10 @@ export default class Footer extends Component {
                 </Col>
                 <Col className='block-2 col-sm-3'>
                   <Nav>
-                    <Nav.Link href="/">О нас</Nav.Link>
-                    <NavLink href="/design">Дизайн</NavLink>
-                    <Nav.Link href="/repair">Ремонт</Nav.Link>
-                    <NavLink href="/contacts">Контакты</NavLink>
+                    <Nav.Link as={Link} to="/">О нас</Nav.Link>
+                    <Nav.Link as={Link} to="/design">Дизайн</Nav.Link>
+                    <Nav.Link as={Link} to="/repair">Ремонт</Nav.Link>
+                    <Nav.Link as={Link} to="/contacts">Контакты</Nav.Link>
                   </Nav>
                 </Col>
                 <Col className='block-3 col-sm-3'>
@@ -30,7 +31,7 @@ export default class Footer extends Component {
                 </Col>
                 <Col className='block-4 col-sm-3'>
                   <p>Телефон</p>
-                  <p>+998770089611</p>
+                  <p><a href="tel:+998770089611">+998770089611</a></p>
                 </Col>
               </Row>
         </Container>

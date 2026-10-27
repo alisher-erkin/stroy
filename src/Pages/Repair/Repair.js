@@ -41,7 +41,7 @@ export default class Repair extends Component {
                 <li>Настил напольных покрытий</li>
                 <li>Замена сантехники</li>
                 <li>Замена розеток и выключателей</li>
-                <li>Клининговая уборка</li>`
+                <li>Клининговая уборка</li>
               </ul>
               <Button variant="primary" size="lg">Подробнее</Button>
             </Col>
