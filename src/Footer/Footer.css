@@ -1,5 +1,6 @@
 .footer {
-    background-color: #A9A9A9;
+    background-color: #1f1f1f;
+    color: #e6e6e6;
     padding: 50px 0;
 }
 .footer .col {
@@ -15,6 +16,15 @@
     text-align: left;
     text-align: center;
 }
-.footer .nav-link {
-    color: black;
+.footer .nav-link,
+.footer a {
+    color: #ffffff;
+}
+.footer .nav-link:hover,
+.footer a:hover {
+    color: #bdbdbd;
+}
+.footer img {
+    filter: invert(1);
+    mix-blend-mode: screen;
 }
