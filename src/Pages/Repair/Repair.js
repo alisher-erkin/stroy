@@ -33,7 +33,7 @@ export default class Repair extends Component {
           <Row>
             <Col>
               <h3>Косметический ремонт</h3>
-              <p>от 70$ до 110$</p>
+              <p>от 100$ до 140$</p>
               <p>(Цены указаны без учёта материалов)</p>
               <ul>
                 <li>Демонтажные работы</li>
@@ -47,7 +47,7 @@ export default class Repair extends Component {
             </Col>
             <Col>
               <h3>Капитальный ремонт</h3>
-              <p>от 110$ до 140$</p>
+              <p>от 140$ до 180$</p>
               <p>(Цены указаны без учёта материалов)</p>
               <ul>
                 <li>Демонтажные работы</li>
@@ -65,7 +65,7 @@ export default class Repair extends Component {
             </Col>
             <Col>
               <h3>Авторский ремонт</h3>
-              <p>от 140$ до 180$</p>
+              <p>от 180$ до 220$</p>
               <p>(Цены указаны без учёта материалов)</p>
               <ul>
                 <li>Дизайн проект</li>
