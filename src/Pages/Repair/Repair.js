@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import img from '../../images/bg-repair.jpg'
 import '../Repair/Repair.css';
 
@@ -43,7 +43,6 @@ export default class Repair extends Component {
                 <li>Замена розеток и выключателей</li>
                 <li>Клининговая уборка</li>
               </ul>
-              <Button variant="primary" size="lg">Подробнее</Button>
             </Col>
             <Col>
               <h3>Капитальный ремонт</h3>
@@ -61,7 +60,6 @@ export default class Repair extends Component {
                 <li>Плиточные работы</li>
                 <li>Клининговая уборка</li>
               </ul>
-              <Button variant="primary" size="lg">Подробнее</Button>
             </Col>
             <Col>
               <h3>Авторский ремонт</h3>
@@ -81,7 +79,6 @@ export default class Repair extends Component {
                 <li>Фигурные потолки</li>
                 <li>Клининговая уборка</li>
               </ul>
-              <Button variant="primary" size="lg">Подробнее</Button>
             </Col>
           </Row>
           <Row className='text-img'>
