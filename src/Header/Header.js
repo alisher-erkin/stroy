@@ -36,7 +36,7 @@ function Header() {
               {languages.map((code) => (
                 <Button
                   key={code}
-                  variant={code === lang ? 'dark' : 'outline-dark'}
+                  variant={code === lang ? 'primary' : 'outline-primary'}
                   onClick={() => setLang(code)}
                   aria-pressed={code === lang}
                 >
