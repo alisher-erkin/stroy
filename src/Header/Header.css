@@ -1,3 +1,18 @@
 .number-phone {
     background-color: #B0C4DE;
 }
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.lang-switch .btn {
+    min-width: 44px;
+    font-weight: 500;
+}
+@media (max-width: 991px) {
+    .header-actions {
+        padding: 12px 0;
+    }
+}
