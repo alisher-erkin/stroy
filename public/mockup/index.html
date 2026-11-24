@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TASTROY — ремонт квартир под ключ в Ташкенте</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --bg-2: #0b162f;
+    --card: #0d1424;
+    --line: rgba(92, 142, 216, 0.22);
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.66);
+    --blue: #5c8ed8;
+    --blue-hover: #77a3e4;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Manrope', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  b, .accent { color: var(--blue); font-weight: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 96px 0; }
+  h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .lead { color: var(--muted); font-size: 18px; max-width: 640px; }
+  .head { margin-bottom: 48px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 16px; border: 1.5px solid var(--blue); cursor: pointer; transition: .2s; font-family: inherit; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: var(--blue-hover); border-color: var(--blue-hover); }
+  .btn-ghost { background: transparent; color: #fff; }
+  .btn-ghost:hover { background: rgba(92, 142, 216, 0.12); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.18em; font-size: 18px; }
+  .logo-mark { width: 38px; height: 38px; border-radius: 10px; background: var(--blue); display: grid; place-items: center; font-size: 22px; letter-spacing: 0; font-family: Georgia, serif; }
+  .menu { display: flex; gap: 28px; font-size: 15px; color: var(--muted); }
+  .menu a:hover { color: #fff; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang button { background: none; border: 0; color: var(--muted); font: 600 13px Manrope, sans-serif; padding: 8px 12px; cursor: pointer; }
+  .lang button.on { background: var(--blue); color: #fff; }
+  .phone { font-weight: 700; font-size: 15px; white-space: nowrap; }
+
+  /* Hero */
+  .hero { position: relative; min-height: min(calc(100vh - 72px), 820px); display: flex; align-items: center; padding: 80px 0; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: url(img/hero.jpg) center/cover no-repeat; }
+  .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #000 0%, rgba(0,0,0,.85) 38%, rgba(0,0,0,.25) 75%, rgba(0,0,0,.1) 100%), linear-gradient(0deg, #000 0%, transparent 30%); }
+  .hero .wrap { position: relative; width: 100%; }
+  .hero h1 { font-size: clamp(38px, 6vw, 72px); line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; max-width: 720px; margin-bottom: 24px; }
+  .hero p { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 560px; margin-bottom: 36px; }
+  .hero p b { color: var(--blue); font-weight: 700; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* Trust */
+  .trust { padding: 0; margin-top: -1px; }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .trust-item { padding: 26px; }
+  .trust-item .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(92, 142, 216, 0.14); display: grid; place-items: center; margin-bottom: 16px; color: var(--blue); }
+  .trust-item h3 { font-size: 18px; margin-bottom: 6px; }
+  .trust-item p { color: var(--muted); font-size: 15px; }
+
+  /* Services */
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .svc { overflow: hidden; display: flex; flex-direction: column; }
+  .svc img { aspect-ratio: 4/3.4; object-fit: cover; width: 100%; }
+  .svc-body { padding: 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .svc h3 { font-size: 22px; }
+  .svc p { color: var(--muted); font-size: 15px; flex: 1; }
+  .price { font-size: 26px; font-weight: 800; }
+  .price small { font-size: 15px; color: var(--muted); font-weight: 600; }
+  .svc-note { margin-top: 20px; color: var(--muted); font-size: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .chip { padding: 12px 18px; border-radius: 999px; border: 1px solid var(--line); font-size: 15px; }
+  .chip span { color: var(--muted); }
+
+  /* Calculator */
+  .calc-sec { background: linear-gradient(180deg, #000 0%, var(--bg-2) 50%, #000 100%); }
+  .calc { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; }
+  .calc-form { padding: 36px; display: grid; gap: 28px; }
+  label { display: block; font-weight: 700; margin-bottom: 12px; }
+  .area-row { display: flex; align-items: center; gap: 18px; }
+  input[type=range] { flex: 1; accent-color: var(--blue); height: 6px; }
+  .area-val { min-width: 96px; text-align: right; font-size: 26px; font-weight: 800; }
+  .types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .types button { background: transparent; border: 1.5px solid var(--line); color: #fff; border-radius: 14px; padding: 14px 10px; font: 600 15px Manrope, sans-serif; cursor: pointer; text-align: center; }
+  .types button small { display: block; color: var(--muted); font-weight: 500; font-size: 13px; margin-top: 4px; }
+  .types button.on { border-color: var(--blue); background: rgba(92, 142, 216, 0.14); }
+  .calc-result { padding: 36px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-color: var(--blue); }
+  .calc-result .lbl { color: var(--muted); }
+  .calc-result .sum { font-size: clamp(32px, 4vw, 44px); font-weight: 800; line-height: 1.15; color: var(--blue); }
+  .calc-result .hint { color: var(--muted); font-size: 14px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+  .step { padding: 24px; display: flex; gap: 16px; align-items: flex-start; }
+  .step::before { counter-increment: s; content: counter(s, decimal-leading-zero); color: var(--blue); font-weight: 800; font-size: 22px; line-height: 1.2; }
+  .step p { font-weight: 600; }
+
+  /* Videos */
+  .vid-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 900px; gap: 16px; }
+  .vid { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 9/16; border: 1px solid var(--line); }
+  .vid img { width: 100%; height: 100%; object-fit: cover; transition: .4s; }
+  .vid:hover img { transform: scale(1.04); }
+  .vid::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.92) 0%, transparent 55%); }
+  .vid .play { position: absolute; top: 16px; right: 16px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: var(--blue); display: grid; place-items: center; }
+  .vid h3 { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; font-size: 18px; line-height: 1.3; }
+  .vid-more { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; text-align: center; padding: 24px; aspect-ratio: 9/16; }
+  .vid-more p { color: var(--muted); }
+
+  /* Gallery */
+  .gal { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
+  .gal figure { position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
+  .gal img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3/4; }
+  .gal figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(0, 0, 0, 0.7); font-size: 13px; color: var(--muted); }
+
+  /* FAQ */
+  .faq { display: grid; gap: 12px; max-width: 860px; }
+  details { padding: 22px 26px; }
+  summary { cursor: pointer; font-weight: 700; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::after { content: "+"; color: var(--blue); font-size: 26px; line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--muted); margin-top: 12px; }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .contact-info { padding: 36px; display: flex; flex-direction: column; gap: 22px; }
+  .contact-info .row span { display: block; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+  .contact-info .row a, .contact-info .row div { font-size: 20px; font-weight: 700; }
+  form.card { padding: 36px; display: grid; gap: 16px; }
+  input[type=text], input[type=tel], input[type=number] { width: 100%; height: 56px; border-radius: 14px; border: 1.5px solid var(--line); background: #000; color: #fff; padding: 0 18px; font: 500 16px Manrope, sans-serif; }
+  input::placeholder { color: rgba(255, 255, 255, 0.4); }
+  input:focus { outline: none; border-color: var(--blue); }
+  .form-msg { color: var(--blue); font-weight: 600; display: none; }
+
+  footer { border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 36px 0 110px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+  /* Mobile sticky bar */
+  .mbar { display: none; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; gap: 10px; }
+  .mbar .btn { flex: 1; height: 52px; }
+
+  @media (max-width: 960px) {
+    .menu, .phone { display: none; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .svc-grid, .calc, .contact { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .vid-grid { grid-template-columns: repeat(2, 1fr); }
+    .gal { grid-template-columns: 1fr 1fr; }
+    .gal figure:first-child { grid-column: span 2; }
+    .gal figure:first-child img { aspect-ratio: 4/3; }
+    .mbar { display: flex; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 68px 0; }
+    .hero { min-height: auto; padding: 90px 0 70px; }
+    .hero-bg::after { background: linear-gradient(0deg, #000 8%, rgba(0,0,0,.7) 60%, rgba(0,0,0,.45) 100%); }
+    .cta .btn { width: 100%; }
+    .trust-grid, .steps { grid-template-columns: 1fr; }
+    .types { grid-template-columns: 1fr; }
+    .calc-form, .calc-result, .contact-info, form.card { padding: 24px; }
+    .vid-more { aspect-ratio: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><span class="logo-mark">T</span>TASTROY</a>
+    <nav class="menu">
+      <a href="#services" data-i18n="navServices"></a>
+      <a href="#calc" data-i18n="navCalc"></a>
+      <a href="#steps" data-i18n="navSteps"></a>
+      <a href="#tips" data-i18n="navTips"></a>
+      <a href="#contact" data-i18n="navContact"></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang"><button data-lang="ru" class="on">RU</button><button data-lang="uz">UZ</button></div>
+      <a class="phone" href="tel:+998770089611">+998 77 008 96 11</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <h1 data-i18n="heroTitle"></h1>
+    <p data-i18n="heroSub"></p>
+    <div class="cta">
+      <a href="#calc" class="btn btn-primary" data-i18n="btnCalc"></a>
+      <a href="https://t.me/+998770089611" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="btnTg"></a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust-grid" id="trust"></div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="svcTitle"></h2><p class="lead" data-i18n="svcLead"></p></div>
+    <div class="svc-grid" id="svc"></div>
+    <p class="svc-note" data-i18n="svcNote"></p>
+    <div class="chips" id="chips"></div>
+  </div>
+</section>
+
+<section class="calc-sec" id="calc">
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="calcTitle"></h2><p class="lead" data-i18n="calcLead"></p></div>
+    <div class="calc">
+      <div class="card calc-form">
+        <div>
+          <label for="area" data-i18n="calcArea"></label>
+          <div class="area-row"><input type="range" id="area" min="20" max="250" step="1" value="60"><div class="area-val"><span id="areaVal">60</span> m²</div></div>
+        </div>
+        <div>
+          <label data-i18n="calcType"></label>
+          <div class="types" id="types"></div>
+        </div>
+      </div>
+      <div class="card calc-result">
+        <div class="lbl" data-i18n="calcResult"></div>
+        <div class="sum" id="sum"></div>
+        <div class="hint" data-i18n="calcHint"></div>
+        <a href="#contact" class="btn btn-primary" data-i18n="calcBtn"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="stepsTitle"></h2></div>
+    <div class="steps" id="stepsList"></div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="tipsTitle"></h2><p class="lead" data-i18n="tipsLead"></p></div>
+    <div class="vid-grid">
+      <a class="vid" href="https://www.instagram.com/tastroy_uz/" target="_blank" rel="noopener">
+        <img src="img/video01_01_hook.jpg" alt=""><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <h3 data-i18n="vid1"></h3>
+      </a>
+      <a class="vid" href="https://www.instagram.com/tastroy_uz/" target="_blank" rel="noopener">
+        <img src="img/video03_01_hook.jpg" alt=""><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <h3 data-i18n="vid2"></h3>
+      </a>
+      <div class="card vid-more">
+        <p data-i18n="vidMoreText"></p>
+        <a href="https://www.instagram.com/tastroy_uz/" target="_blank" rel="noopener" class="btn btn-primary">@tastroy_uz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="galTitle"></h2><p class="lead" data-i18n="galLead"></p></div>
+    <div class="gal">
+      <figure><img src="img/svc_author.jpg" alt=""><figcaption data-i18n="galCap"></figcaption></figure>
+      <figure><img src="img/video03_09_final.jpg" alt=""><figcaption data-i18n="galCap"></figcaption></figure>
+      <figure><img src="img/video01_07_final.jpg" alt=""><figcaption data-i18n="galCap"></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="faqTitle"></h2></div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="head"><h2 data-i18n="contactTitle"></h2><p class="lead" data-i18n="contactLead"></p></div>
+    <div class="contact">
+      <form class="card" id="form">
+        <input type="text" required data-ph="fName">
+        <input type="tel" required data-ph="fPhone">
+        <input type="number" min="1" data-ph="fArea">
+        <button class="btn btn-primary" type="submit" data-i18n="fSend"></button>
+        <div class="form-msg" id="formMsg" data-i18n="fDemo"></div>
+      </form>
+      <div class="card contact-info">
+        <div class="row"><span data-i18n="cPhone"></span><a href="tel:+998770089611">+998 77 008 96 11</a></div>
+        <div class="row"><span data-i18n="cHours"></span><div data-i18n="cHoursVal"></div></div>
+        <div class="row"><span>Instagram</span><a href="https://www.instagram.com/tastroy_uz/" target="_blank" rel="noopener">@tastroy_uz</a></div>
+        <a href="https://t.me/+998770089611" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="btnTg"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 TASTROY · <span data-i18n="footCity"></span></div>
+    <div>tastroy.uz</div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a href="tel:+998770089611" class="btn btn-ghost" style="background:#000" data-i18n="mCall"></a>
+  <a href="https://t.me/+998770089611" target="_blank" rel="noopener" class="btn btn-primary">Telegram</a>
+</div>
+
+<script>
+const ICONS = {
+  doc: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>',
+  calc: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg>',
+  shield: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+  steps: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 20h4v-5h4v-5h4V5h4"/></svg>',
+};
+const PRICES = [[100, 140], [140, 180], [180, 220]];
+const IMGS = ['img/svc_cosmetic.jpg', 'img/svc_capital.jpg', 'img/svc_author.jpg'];
+
+const T = {
+  ru: {
+    title: 'TASTROY — ремонт квартир под ключ в Ташкенте',
+    navServices: 'Услуги', navCalc: 'Калькулятор', navSteps: 'Этапы', navTips: 'Советы', navContact: 'Контакты',
+    heroTitle: 'Ремонт квартир <b>под ключ</b> в Ташкенте',
+    heroSub: 'От <b>$100 за м²</b> · договор и подробная смета · гарантия <b>12 месяцев</b>',
+    btnCalc: 'Рассчитать стоимость', btnTg: 'Написать в Telegram',
+    trust: [
+      ['doc', 'Договор', 'Все условия и сроки на бумаге'],
+      ['calc', 'Подробная смета', 'Каждая позиция расписана заранее'],
+      ['shield', 'Гарантия 12 месяцев', 'На все выполненные работы'],
+      ['steps', 'Поэтапная оплата', 'Платите за выполненный этап'],
+    ],
+    svcTitle: 'Услуги и <b>цены</b>',
+    svcLead: 'Работаем с новостройками и вторичным жильём любой площади.',
+    svc: [
+      ['Косметический ремонт', 'Покраска, обои, напольные покрытия, замена дверей и сантехники.'],
+      ['Капитальный ремонт', 'Демонтаж, электрика, сантехника, штукатурка, стяжка и чистовая отделка.'],
+      ['Авторский ремонт', 'Ремонт по дизайн-проекту: индивидуальные решения и материалы.'],
+    ],
+    priceFmt: (a, b) => `$${a}–${b} <small>за м²</small>`,
+    svcNote: 'Цены указаны за м², без учёта материалов.',
+    chips: [['Ремонт в новостройке', 'цена по запросу'], ['Коммерческий ремонт', 'цена по запросу']],
+    calcTitle: 'Рассчитайте <b>стоимость</b>',
+    calcLead: 'Выберите площадь и тип ремонта — покажем примерный бюджет.',
+    calcArea: 'Площадь квартиры', calcType: 'Тип ремонта',
+    types: ['Косметический', 'Капитальный', 'Авторский'],
+    calcResult: 'Примерная стоимость работ',
+    sumFmt: (a, b) => `$${a} – $${b}`,
+    calcHint: 'Без учёта материалов. Точную смету составим после выезда на объект.',
+    calcBtn: 'Получить точную смету',
+    stepsTitle: 'Как мы <b>работаем</b>',
+    steps: ['Телефонный звонок', 'Составление сметы по проекту', 'Обсуждение и корректировка договора', 'Заключение договора', 'Выезд на объект и поставка материалов', 'Поэтапное выполнение работ', 'Поэтапная оплата выполненных работ', 'Финальная уборка помещения', 'Подписание заключительного акта'],
+    tipsTitle: 'Полезные <b>советы</b> о ремонте',
+    tipsLead: 'Короткие видео о том, как сделать ремонт правильно и не переплатить.',
+    vid1: 'С чего начинать ремонт', vid2: 'Штукатурка и выравнивание стен',
+    vidMoreText: 'Новые видео каждую неделю в нашем Instagram',
+    galTitle: 'Дизайн-<b>проекты</b>',
+    galLead: 'Перед ремонтом показываем, как будет выглядеть квартира.',
+    galCap: 'Визуализация',
+    faqTitle: 'Частые <b>вопросы</b>',
+    faq: [
+      ['Что входит в цену за м²?', 'Стоимость работ. Материалы оплачиваются отдельно — их стоимость будет в смете.'],
+      ['Как происходит оплата?', 'Поэтапно: вы оплачиваете каждый выполненный этап работ.'],
+      ['Есть ли гарантия?', 'Да, на выполненные работы мы даём гарантию до 12 месяцев.'],
+      ['Работаете с новостройками?', 'Да, работаем и с новостройками, и со вторичным жильём любой площади.'],
+    ],
+    contactTitle: 'Оставьте <b>заявку</b>',
+    contactLead: 'Перезвоним, ответим на вопросы и договоримся о выезде на объект.',
+    fName: 'Ваше имя', fPhone: 'Телефон', fArea: 'Площадь, м² (необязательно)', fSend: 'Отправить заявку',
+    fDemo: 'Это макет: отправка заявок подключится на рабочем сайте.',
+    cPhone: 'Телефон', cHours: 'Режим работы', cHoursVal: '10:00 — 19:00',
+    footCity: 'Ташкент', mCall: 'Позвонить',
+  },
+  uz: {
+    title: 'TASTROY — Toşkentda kvartiralarni kalit topşiriş asosida taʼmirlaş',
+    navServices: 'Xizmatlar', navCalc: 'Kalkulyator', navSteps: 'Bosqiçlar', navTips: 'Maslahatlar', navContact: 'Aloqa',
+    heroTitle: 'Toşkentda <b>kalit topşiriş</b> asosida kvartira taʼmiri',
+    heroSub: '1 m² uçun <b>100$ dan</b> · şartnoma va batafsil smeta · <b>12 oy</b> kafolat',
+    btnCalc: 'Narxni hisoblaş', btnTg: 'Telegramda yozish',
+    trust: [
+      ['doc', 'Şartnoma', 'Barça şartlar va muddatlar qoğozda'],
+      ['calc', 'Batafsil smeta', 'Har bir band oldindan yozilgan'],
+      ['shield', '12 oy kafolat', 'Barça bajarilgan işlarga'],
+      ['steps', 'Bosqiçma-bosqiç tölov', 'Bajarilgan bosqiç uçun tölaysiz'],
+    ],
+    svcTitle: 'Xizmatlar va <b>narxlar</b>',
+    svcLead: 'Har qanday maydondagi yangi binolar va ikkilamçi uy-joy bilan işlaymiz.',
+    svc: [
+      ['Kosmetik taʼmir', 'Böyaş, gulqoğoz, pol qoplamalari, eşik va santexnikani almaştiriş.'],
+      ['Kapital taʼmir', 'Demontaj, elektr, santexnika, şuvoq, styajka va pardozlaş işlari.'],
+      ['Mualliflik taʼmiri', 'Dizayn-loyiha böyiça taʼmir: individual yeçimlar va materiallar.'],
+    ],
+    priceFmt: (a, b) => `${a}–${b}$ <small>1 m² uçun</small>`,
+    svcNote: 'Narxlar 1 m² uçun, materiallarsiz körsatilgan.',
+    chips: [['Yangi binoda taʼmir', 'narxi kelişiladi'], ['Tijorat taʼmiri', 'narxi kelişiladi']],
+    calcTitle: 'Narxni <b>hisoblang</b>',
+    calcLead: 'Maydon va taʼmir turini tanlang — taxminiy budjetni körsatamiz.',
+    calcArea: 'Kvartira maydoni', calcType: 'Taʼmir turi',
+    types: ['Kosmetik', 'Kapital', 'Mualliflik'],
+    calcResult: 'Işlarning taxminiy narxi',
+    sumFmt: (a, b) => `${a}$ – ${b}$`,
+    calcHint: 'Materiallarsiz. Aniq smetani obyektni körgandan keyin tuzamiz.',
+    calcBtn: 'Aniq smeta oliş',
+    stepsTitle: 'Qanday <b>işlaymiz</b>',
+    steps: ['Telefon orqali boğlaniş', 'Loyiha böyiça smeta tuziş', 'Şartnomani muhokama qiliş va tuzatiş', 'Şartnoma tuziş', 'Obyektga çiqiş va materiallarni yetkazib beriş', 'Işlarni bosqiçma-bosqiç bajariş', 'Bajarilgan işlar uçun bosqiçma-bosqiç tölov', 'Xonani yakuniy tozalaş', 'Yakuniy dalolatnomani imzolaş'],
+    tipsTitle: 'Taʼmir haqida <b>foydali maslahatlar</b>',
+    tipsLead: 'Taʼmirni töğri va ortiqça pul sarflamasdan qiliş haqida qisqa videolar.',
+    vid1: 'Taʼmirni nimadan boşlaş kerak', vid2: 'Devorlarni şuvaş va tekislaş',
+    vidMoreText: 'Instagramimizda har hafta yangi videolar',
+    galTitle: 'Dizayn-<b>loyihalar</b>',
+    galLead: 'Taʼmirdan oldin kvartira qanday körinişini körsatamiz.',
+    galCap: 'Vizualizatsiya',
+    faqTitle: 'Köp beriladigan <b>savollar</b>',
+    faq: [
+      ['1 m² narxiga nima kiradi?', 'Işlar narxi. Materiallar alohida tölanadi — ularning narxi smetada böladi.'],
+      ['Tölov qanday amalga oşiriladi?', 'Bosqiçma-bosqiç: har bir bajarilgan bosqiç uçun tölaysiz.'],
+      ['Kafolat bormi?', 'Ha, bajarilgan işlarga 12 oygaça kafolat beramiz.'],
+      ['Yangi binolarda işlaysizmi?', 'Ha, yangi binolar va ikkilamçi uy-joy bilan işlaymiz.'],
+    ],
+    contactTitle: '<b>Ariza</b> qoldiring',
+    contactLead: 'Qayta qöngiroq qilamiz, savollarga javob beramiz va obyektga çiqişni kelişamiz.',
+    fName: 'Ismingiz', fPhone: 'Telefon', fArea: 'Maydon, m² (ixtiyoriy)', fSend: 'Ariza yuboriş',
+    fDemo: 'Bu maket: arizalarni yuboriş işçi saytda ulanadi.',
+    cPhone: 'Telefon', cHours: 'Iş vaqti', cHoursVal: '10:00 — 19:00',
+    footCity: 'Toşkent', mCall: 'Qöngiroq qiliş',
+  },
+};
+
+let lang = 'ru', type = 1;
+const $ = (s) => document.querySelector(s);
+const fmt = (n) => n.toLocaleString('ru-RU').replace(/ /g, ' ');
+
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll('[data-i18n]').forEach((el) => { el.innerHTML = t[el.dataset.i18n]; });
+  document.querySelectorAll('[data-ph]').forEach((el) => { el.placeholder = t[el.dataset.ph]; });
+  document.querySelectorAll('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.lang === lang));
+  $('#trust').innerHTML = t.trust.map(([i, h, p]) => `<div class="card trust-item"><div class="ico">${ICONS[i]}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
+  $('#svc').innerHTML = t.svc.map(([h, p], i) => `<div class="card svc"><img src="${IMGS[i]}" alt=""><div class="svc-body"><h3>${h}</h3><p>${p}</p><div class="price">${t.priceFmt(...PRICES[i])}</div></div></div>`).join('');
+  $('#chips').innerHTML = t.chips.map(([a, b]) => `<div class="chip">${a} · <span>${b}</span></div>`).join('');
+  $('#types').innerHTML = t.types.map((n, i) => `<button type="button" data-t="${i}" class="${i === type ? 'on' : ''}">${n}<small>$${PRICES[i][0]}–${PRICES[i][1]}/m²</small></button>`).join('');
+  $('#stepsList').innerHTML = t.steps.map((s) => `<div class="card step"><p>${s}</p></div>`).join('');
+  $('#faq').innerHTML = t.faq.map(([q, a]) => `<details class="card"><summary>${q}</summary><p>${a}</p></details>`).join('');
+  calc();
+}
+
+function calc() {
+  const area = +$('#area').value;
+  $('#areaVal').textContent = area;
+  const [a, b] = PRICES[type];
+  $('#sum').textContent = T[lang].sumFmt(fmt(a * area), fmt(b * area));
+}
+
+document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => { lang = b.dataset.lang; render(); }));
+$('#area').addEventListener('input', calc);
+$('#types').addEventListener('click', (e) => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  type = +b.dataset.t;
+  document.querySelectorAll('#types button').forEach((x) => x.classList.toggle('on', x === b));
+  calc();
+});
+$('#form').addEventListener('submit', (e) => { e.preventDefault(); $('#formMsg').style.display = 'block'; });
+render();
+</script>
+</body>
+</html>
