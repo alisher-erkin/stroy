@@ -1,60 +1,55 @@
-import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import img from '../../images/bg-repair.jpg'
-import '../Repair/Repair.css';
 import { useLang } from '../../i18n/LanguageContext';
-
-// Цена за м² в долларах, без учёта материалов
-const PRICES = [
-  [100, 140],
-  [140, 180],
-  [180, 220],
-];
-
+import { PRICES } from '../../config';
+import PageHero from '../../components/PageHero';
+import CtaBand from '../../components/CtaBand';
+import heroImg from '../../images/new/svc_capital.jpg';
 
 export default function Repair() {
   const { t } = useLang();
+  const r = t.repair;
 
   return (
-    <div>
-      <Container fluid>
-        <Row>
-          <img src={img} alt='repair' />
-        </Row>
-      </Container>
-      <Container className="items">
-        <Row>
-          <h3>{t.repair.title}</h3>
-          {t.repair.paragraphs.map((text, i) => (
-            <p key={i}>{text}</p>
-          ))}
-            <h3>{t.repair.typesTitle}</h3>
-            <p>{t.repair.typesText}</p>
-        </Row>
-        <Row>
-          {t.repair.tariffs.map((tariff, i) => (
-            <Col key={tariff.title}>
-              <h3>{tariff.title}</h3>
-              <p>{t.repair.price(PRICES[i][0], PRICES[i][1])}</p>
-              <p>{t.repair.priceNote}</p>
-              <ul>
-                {tariff.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </Col>
-          ))}
-        </Row>
-        <Row className='text-img'>
-          <Col>
-            <h3>{t.repair.materialsTitle}</h3>
-            <p>{t.repair.materials}</p>
-          </Col>
-          <Col>
-            <img src="img/painting.jpg" alt="materials" className="img-fluid" />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  )
+    <>
+      <PageHero title={r.title} lead={t.pages.repairLead} image={heroImg} />
+
+      <section className="sec">
+        <div className="wrap text">
+          {r.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </div>
+      </section>
+
+      <section className="sec sec-tint">
+        <div className="wrap">
+          <div className="head">
+            <h2>{r.typesTitle}</h2>
+            <p className="lead">{r.typesText}</p>
+          </div>
+          <div className="grid-3">
+            {r.tariffs.map((tariff, i) => (
+              <div className={`card tariff${i === 1 ? ' featured' : ''}`} key={tariff.title}>
+                <h3>{tariff.title}</h3>
+                <div className="price">{t.ui.priceFmt(...PRICES[i])} <small>{t.ui.perM2}</small></div>
+                <ul className="check-list">
+                  {tariff.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="svc-note">{t.ui.priceNote}</p>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap split">
+          <div className="text">
+            <h2>{r.materialsTitle}</h2>
+            <p>{r.materials}</p>
+          </div>
+          <img src="/img/painting.jpg" alt="" className="split-img" loading="lazy" />
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
+  );
 }

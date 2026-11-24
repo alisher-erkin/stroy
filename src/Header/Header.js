@@ -1,62 +1,58 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import logo from '../Logo/logo.jpg';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { Routes, Route, Link } from 'react-router-dom';
-import Aboutus from '../Pages/Aboutus/Aboutus';
-import Design from '../Pages/Design/Design';
-import Repair from '../Pages/Repair/Repair';
-import Contacts from '../Pages/Contacts/Contacts';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
-import './Header.css';
+import { PHONE, PHONE_HREF } from '../config';
 
-
-function Header() {
+export default function Header() {
   const { t, lang, setLang, languages } = useLang();
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Закрываем мобильное меню и прокручиваем вверх при смене страницы
+  useEffect(() => {
+    setOpen(false);
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const links = [
+    ['/', t.nav.home],
+    ['/repair', t.nav.repair],
+    ['/design', t.nav.design],
+    ['/about', t.nav.about],
+    ['/contacts', t.nav.contacts],
+  ];
 
   return (
-    <>
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-            <img src={logo} alt='logo' />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">{t.nav.about}</Nav.Link>
-            <Nav.Link as={Link} to="/design">{t.nav.design}</Nav.Link>
-            <Nav.Link as={Link} to="/repair">{t.nav.repair}</Nav.Link>
-            <Nav.Link as={Link} to="/contacts">{t.nav.contacts}</Nav.Link>
-          </Nav>
-          <div className="header-actions">
-            <ButtonGroup size="sm" aria-label="Language" className="lang-switch">
-              {languages.map((code) => (
-                <Button
-                  key={code}
-                  variant={code === lang ? 'primary' : 'outline-primary'}
-                  onClick={() => setLang(code)}
-                  aria-pressed={code === lang}
-                >
-                  {code.toUpperCase()}
-                </Button>
-              ))}
-            </ButtonGroup>
-            <Button href="tel:+998770089611">+998770089611</Button>
+    <header className="site-header">
+      <div className="wrap nav">
+        <Link to="/" className="logo"><span className="logo-mark">T</span>TASTROY</Link>
+        <nav className="menu">
+          {links.map(([to, label]) => (
+            <NavLink key={to} to={to} end={to === '/'}>{label}</NavLink>
+          ))}
+        </nav>
+        <div className="nav-right">
+          <div className="lang" role="group" aria-label="Language">
+            {languages.map((code) => (
+              <button key={code} type="button" className={code === lang ? 'on' : ''} aria-pressed={code === lang} onClick={() => setLang(code)}>
+                {code.toUpperCase()}
+              </button>
+            ))}
           </div>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-      <Routes>
-        <Route index element={<Aboutus />} />
-        <Route path="/design" element={<Design />} />
-        <Route path="/repair" element={<Repair />} />
-        <Route path="/contacts" element={<Contacts />} />
-      </Routes>
-    </>
+          <a className="phone" href={PHONE_HREF}>{PHONE}</a>
+          <button type="button" className="burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div className={`mobile-menu${open ? ' open' : ''}`}>
+        {links.map(([to, label]) => (
+          <NavLink key={to} to={to} end={to === '/'}>{label}</NavLink>
+        ))}
+        <a className="phone" href={PHONE_HREF}>{PHONE}</a>
+      </div>
+    </header>
   );
 }
-
-export default Header;

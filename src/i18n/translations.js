@@ -1,3 +1,5 @@
+import site from './site';
+
 // Тексты сайта на двух языках.
 // Узбекский — обновлённая латиница (закон от 21.10.2026): oʻ → ö, gʻ → ğ, sh → ş, ch → ç.
 
@@ -305,6 +307,7 @@ const uz = {
   },
 };
 
-const translations = { ru, uz };
+// Новый дизайн: site.js дополняет и переопределяет meta/nav
+const translations = { ru: { ...ru, ...site.ru }, uz: { ...uz, ...site.uz } };
 
 export default translations;
