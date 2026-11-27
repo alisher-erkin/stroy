@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import translations from './translations';
 
 const STORAGE_KEY = 'tastroy-lang';
-const LANGUAGES = ['ru', 'uz'];
+const LANGUAGES = ['uz', 'ru'];
 
 function getInitialLang() {
   try {
